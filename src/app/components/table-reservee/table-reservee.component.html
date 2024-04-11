@@ -1,0 +1,28 @@
+<div
+  class="d-flex flex-column align-items-center border rounded border-primary bg-light text-primary text-center"
+>
+  <div class="d-flex flex-column">
+    <p class="">Table n°{{ table.numTable }}</p>
+
+    <p class="">Réservation : Alice Dupont</p>
+
+    <p class="">Nombre personnes : {{ table.capaciteTable }}</p>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary m-2"
+    (click)="confirmerPresence()"
+  >
+    Confirmer la présence
+  </button>
+
+  <button
+    type="button"
+    class="btn btn-outline-primary m-2"
+    data-bs-dismiss="modal"
+    (click)="onClose()"
+  >
+    Retour
+  </button>
+</div>

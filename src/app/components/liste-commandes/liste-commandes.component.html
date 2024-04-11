@@ -1,0 +1,15 @@
+<app-header [text]="'Commandes'"></app-header>
+<ng-container *ngIf="commandes$ | async as commandes">
+  <p class="text-center mt-3">{{ commandes.length }} commande(s)</p>
+  <div class="container">
+    <div
+      (click)="selectCommande(commande)"
+      *ngFor="let commande of commandes"
+      class="btn btn-outline-primary p-1 m-2 w-25 ms-3"
+    >
+      <p>n°{{ commande.id }}</p>
+      <p>{{ commande.statut }}</p>
+    </div>
+  </div>
+</ng-container>
+<app-navbar></app-navbar>

@@ -1,0 +1,19 @@
+.plusmoins {
+  width: 2rem;
+  height: 2rem;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+.cadre:active,
+.cadre:focus,
+.cadre:hover,
+select:active,
+select:focus,
+select:hover {
+  background-color: transparent !important;
+  border-color: inherit !important;
+  color: #f96540;
+}

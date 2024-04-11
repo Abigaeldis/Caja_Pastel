@@ -1,0 +1,22 @@
+.table-card {
+  width: 5rem;
+  height: 5rem;
+}
+
+.legende {
+  width: 3rem;
+  height: 1rem;
+  border-radius: 5px;
+}
+
+.reservee {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 6px,
+    #f96540 8px,
+    #f96540 8px
+  );
+  text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white,
+    2px 2px 0 white;
+}

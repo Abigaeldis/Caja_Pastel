@@ -1,0 +1,75 @@
+<app-header [text]="'Accueil'"></app-header>
+<div class="custom-relative image-overlay">
+  <h1 class="">Tables</h1>
+  <div class="overlay"></div>
+  <img
+    src="\assets\images\sauce.png"
+    class="img-fluid min-vw-100"
+    alt="image_accueil1"
+  />
+</div>
+<div class="container row justify-content-center m-0 mt-2">
+  <button
+    routerLink="/plan-de-salle"
+    class="btn btn-outline-primary p-3 mt-2 mb-2 m col-9 accueil-btn"
+  >
+    Plan de salle
+  </button>
+</div>
+
+<div class="custom-relative image-overlay">
+  <h1 class="">Messages et Réservations</h1>
+  <div class="overlay"></div>
+  <img
+    src="/assets/images/banniere_detail_restaurant.png"
+    class="img-fluid min-vw-100"
+    alt="image_accueil2"
+  />
+</div>
+
+<div class="container row m-0 mt-2 gap-2 justify-content-center">
+  <button
+    routerLink="/messages"
+    class="btn btn-outline-primary col-5 m-2 min-vw-50 custom-btn-accueil accueil-btn"
+  >
+    <p>Notifications</p>
+    <ng-container *ngIf="reservations$ | async as reservations">
+      <span class="notification-icon">
+        <i class="fa fa-bell"></i>
+        <span class="badge">{{ reservations.length }}</span>
+      </span>
+    </ng-container>
+  </button>
+  <button
+    routerLink="/reservations"
+    class="btn btn-outline-primary col-5 m-2 min-vw-50 custom-btn-accueil accueil-btn"
+  >
+    Réservations
+  </button>
+</div>
+
+<div class="custom-relative image-overlay">
+  <h1 class="">Commandes</h1>
+  <div class="overlay"></div>
+  <img
+    src="/assets/images/banner_connexion.png"
+    class="img-fluid min-vw-100"
+    alt="image_accueil3"
+  />
+</div>
+
+<div class="container row m-0 mt-2 gap-2 justify-content-center">
+  <button
+    routerLink="/liste-commandes"
+    class="btn btn-outline-primary col-5 m-2 min-vw-50 custom-btn-accueil accueil-btn"
+  >
+    Liste des commandes
+  </button>
+  <button
+    routerLink="/prendre-commande"
+    class="btn btn-outline-primary col-5 m-2 min-vw-50 custom-btn-accueil accueil-btn"
+  >
+    Prendre une commande
+  </button>
+</div>
+<app-navbar></app-navbar>

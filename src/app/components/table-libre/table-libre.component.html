@@ -1,0 +1,37 @@
+<div
+  class="d-flex flex-column align-items-center border rounded border-primary bg-light text-primary text-center"
+>
+  <div class="d-flex flex-column">
+    <p class="">Table n°{{ table.numTable }}</p>
+    <p class="">Nombre de personnes :</p>
+    <select
+      name="choixTable"
+      class="form-sm-select m-2 btn btn-outline-primary"
+      aria-label="Choix nombre de personnes"
+    >
+      <option
+        *ngFor="let i of iterateNumbers((table.capaciteTable || 0) + 1)"
+        [value]="i"
+      >
+        {{ i }}
+      </option>
+    </select>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary m-2 text-light"
+    (click)="confirmerPresence()"
+  >
+    Confirmer l'arrivée
+  </button>
+
+  <button
+    type="button"
+    class="btn btn-outline-primary m-2"
+    data-bs-dismiss="modal"
+    (click)="onClose()"
+  >
+    Retour
+  </button>
+</div>

@@ -1,0 +1,25 @@
+<div
+  class="d-flex flex-column align-items-end border rounded border-primary bg-primary text-light text-center"
+>
+  <button
+    type="button"
+    class="btn-close mt-1 me-1"
+    data-bs-dismiss="modal"
+    aria-label="Close"
+    (click)="onClose()"
+  ></button>
+  <div class="">
+    <p>{{ message?.utilisateur?.prenom }} {{ message?.utilisateur?.nom }}</p>
+
+    <p class="identifier small">
+      Contact :
+      {{ message?.utilisateur?.telephone }}
+    </p>
+
+    <p class="identifier small">
+      Objet :
+      {{ message?.titre }}
+    </p>
+    <p class="identifier small">{{ message?.corpsMessage }}</p>
+  </div>
+</div>

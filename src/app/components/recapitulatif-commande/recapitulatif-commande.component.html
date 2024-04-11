@@ -1,0 +1,28 @@
+<div class="modal-header justify-content-between">
+  <h4 class="modal-title text-primary">
+    Récapitulatif - table n°{{ table.numTable }}
+  </h4>
+  <button
+    type="button"
+    class="close btn btn-outline-primary"
+    aria-label="Close"
+    (click)="dismiss()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body text-primary">
+  <div *ngFor="let item of tableau" class="d-flex flex-column">
+    <ng-container *ngIf="item.key | async as plat">
+      <p>{{ item.value }} x {{ plat.nom }}</p>
+    </ng-container>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-primary" (click)="dismiss()">
+    Retour
+  </button>
+  <button type="button" class="btn btn-primary text-light" (click)="confirm()">
+    Envoyer
+  </button>
+</div>

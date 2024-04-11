@@ -1,0 +1,80 @@
+<app-header [text]="'Reservations'"></app-header>
+<div class="main-content min-vh-100">
+  <div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-3 text-center">
+        <button class="btn text-primary" id="prev" (click)="incrementDate(-1)">
+          ◀
+        </button>
+      </div>
+      <div class="col-6">
+        <div class="input-group">
+          <input
+            class="form-control text-center text-primary border-primary"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            [(ngModel)]="model"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            (click)="d.toggle()"
+            (ngModelChange)="onDateChangeInput($event)"
+          />
+        </div>
+      </div>
+      <div class="col-3 text-center">
+        <button class="btn text-primary" id="next" (click)="incrementDate(1)">
+          ▶
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row containe justify-content-center mt-2 text-primary">
+    <div class="col-4 h3">Client</div>
+    <div class="col-4 h3">Table</div>
+    <div class="col-1"></div>
+  </div>
+  <ng-container
+    *ngIf="reservationsByDate$ | async as reservationsByDate; else loading"
+  >
+    <div class="d-flex container flex-column gap-2">
+      <div
+        class="row reservation justify-content-center"
+        *ngFor="let reservation of reservationsByDate"
+      >
+        <button class="btn btn-outline-primary col-6">
+          <p>{{ reservation.utilisateur?.nom }}</p>
+        </button>
+
+        <p class="col-3 text-primary text-center mt-1">
+          {{ reservation.table?.numTable || "-" }}
+        </p>
+
+        <div class="col-2 d-flex gap-1 justify-content-end ms-2">
+          <button
+            class="btn btn-outline-primary"
+            *ngIf="reservation.statut === 'En attente'"
+            (click)="askValidationAndConfirm(reservation)"
+          >
+            <i class="fas fa-check"></i>
+          </button>
+
+          <button
+            class="btn btn-primary"
+            (click)="askConfirmationAndDelete(reservation.id!)"
+          >
+            <i class="fas fa-times text-light"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <ngb-alert [dismissible]="true" type="warning">
+      <ng-template spinner> </ng-template>
+      <p>Pas de réservation</p>
+    </ngb-alert>
+  </ng-template>
+</div>
+<app-navbar></app-navbar>

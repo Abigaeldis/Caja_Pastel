@@ -1,0 +1,31 @@
+<app-header [text]="'Connexion'"></app-header>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <form
+    (submit)="onLogin()"
+    class="border p-3 d-flex flex-column gap-3 centered-transform"
+  >
+    <div class="form-group">
+      <input
+        placeholder="Email"
+        type="email"
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <input
+        placeholder="Mot de Passe"
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        class="form-control"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary text-light">Login</button>
+  </form>
+</div>

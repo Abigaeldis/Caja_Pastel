@@ -1,0 +1,47 @@
+<div class="modal-header justify-content-between">
+  <h4 class="modal-title text-primary">
+    Validation de la demande de réservation
+  </h4>
+  <button
+    type="button"
+    class="close btn btn-outline-primary"
+    aria-label="Close"
+    (click)="dismiss()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body text-primary">
+  <p>
+    {{ reservation.utilisateur?.prenom }} {{ reservation.utilisateur?.nom }}
+  </p>
+  <p>Le {{ reservation.date | date : "dd/MM/yyyy HH:mm" }}</p>
+  <p>Pour {{ reservation.nbPersonne }} personnes</p>
+  <hr />
+  <div>
+    <p>Choix de table :</p>
+    <select
+      name="choixTable"
+      class="form-sm-select m-2 btn btn-outline-primary"
+      aria-label="Choix table"
+      [(ngModel)]="table"
+      required
+    >
+      <option
+        *ngFor="let currentTable of tables$ | async"
+        [ngValue]="currentTable"
+      >
+        Table n°{{ currentTable.numTable }} -
+        {{ currentTable.capaciteTable }} p.
+      </option>
+    </select>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary text-light" (click)="dismiss()">
+    Annuler
+  </button>
+  <button type="button" class="btn btn-outline-primary" (click)="confirm()">
+    Valider
+  </button>
+</div>

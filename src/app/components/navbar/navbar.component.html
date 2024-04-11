@@ -1,0 +1,49 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light fixed-bottom bg-primary p-0 pt-2 d-flex justify-content-center"
+>
+  <div class="d-flex justify-content-center">
+    <div class="row w-100 m-0">
+      <div class="col-3 text-center d-flex flex-column align-items-center">
+        <button
+          class="btn d-flex flex-column text-light gap-2 align-items-center"
+          title="Accueil"
+          routerLink="/accueil"
+        >
+          <i class="fa fa-home fa-xl mb-0 mt-2"></i>
+          <p class="mb-0 mt-2 text-light">Accueil</p>
+        </button>
+      </div>
+      <div class="col-3 text-center d-flex flex-column align-items-center">
+        <button
+          class="btn d-flex flex-column text-light gap-2 align-items-center"
+          title="Commandes "
+          routerLink="/liste-commandes"
+        >
+          <i class="fa fa-clipboard fa-xl mb-0 mt-2"></i>
+          <p class="mb-0 mt-2 text-light">Commandes</p>
+        </button>
+      </div>
+      <div class="col-3 text-center d-flex flex-column align-items-center">
+        <button
+          class="btn d-flex flex-column text-light gap-2 align-items-center"
+          title="Reservations "
+          routerLink="/reservations"
+        >
+          <i class="fa fa-calendar-check fa-xl mb-0 mt-2"></i>
+          <p class="mb-0 mt-2 text-light">Reservations</p>
+        </button>
+      </div>
+      <div class="col-3 text-center d-flex flex-column align-items-center">
+        <button
+          class="btn d-flex flex-column text-light gap-2 align-items-center"
+          [class.btn-disabled]="!isAdmin"
+          title="Gestion"
+          routerLink="/gestion"
+        >
+          <i class="fa fa-cogs fa-xl mb-0 mt-2"></i>
+          <p class="mb-0 mt-2 text-light">Gestion</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

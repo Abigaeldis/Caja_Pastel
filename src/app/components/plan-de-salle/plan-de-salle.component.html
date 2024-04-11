@@ -1,0 +1,51 @@
+<app-header [text]="'Plan de salle'"></app-header>
+
+<ng-container *ngIf="tables$ | async as tables">
+  <div
+    class="d-flex flex-row flex-wrap gap-4 m-4 mt-5 justify-content-center align-items-center"
+  >
+    <div
+      (click)="selectTable(table)"
+      *ngFor="let table of tables"
+      [ngClass]="{
+        btn: true,
+        'btn-outline-primary':
+          table.etat === 'Libre' || table.etat === 'Réservée',
+        'btn-primary': table.etat === 'Présent',
+        reservee: table.etat === 'Réservée',
+        'd-flex': true,
+        'justify-content-center': true,
+        'align-items-center': true,
+        'table-card': true,
+        '--bs-btn-font-size-1.5': true,
+        'text-primary': table.etat === 'Libre' || table.etat === 'Réservée',
+        'text-white': table.etat === 'Présent',
+      }"
+    >
+      <p class="small mb-0">{{ table.numTable }}</p>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container>
+  <div
+    class="d-flex flex-row flex-wrap gap-4 m-4 mt-5 justify-content-center align-items-center"
+  >
+    <h2 class="text-primary">Légende</h2>
+    <div class="d-flex flex-row gap-3">
+      <div class="d-flex flex-column align-items-center">
+        <p class="text-primary mb-0">Libre</p>
+        <div class="legende btn btn-outline-primary"></div>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <p class="text-primary mb-0">Présent</p>
+        <div class="legende btn btn-primary"></div>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <p class="text-primary mb-0">Réservée</p>
+        <div class="legende reservee btn btn-outline-primary"></div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<app-navbar></app-navbar>

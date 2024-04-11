@@ -1,0 +1,58 @@
+<app-header [text]="'Notifications'"></app-header>
+
+<ng-container *ngIf="reservations$ | async as reservations">
+  <div class="d-flex container flex-column gap-2">
+    <p class="text-primary text-center mt-3">
+      {{ reservations.length }} Réservation(s) en attente
+    </p>
+    <div
+      class="row reservation justify-content-around"
+      *ngFor="let reservation of reservations"
+    >
+      <button class="btn btn-outline-primary col-6">
+        <p>
+          {{ reservation.utilisateur?.nom }} - {{ reservation.nbPersonne }} p.
+        </p>
+      </button>
+      <div class="col-2 d-flex gap-1 justify-content-end ms-2">
+        <button
+          class="btn btn-outline-primary check d-flex justify-content-center align-items-center"
+          (click)="askValidationAndConfirm(reservation)"
+        >
+          <i class="fas fa-check"></i>
+        </button>
+
+        <button
+          class="btn btn-primary check d-flex justify-content-center align-items-center"
+          (click)="askConfirmationAndDelete(reservation.id!)"
+        >
+          <i class="fas fa-times text-light"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr />
+</ng-container>
+
+<ng-container *ngIf="messages$ | async as messages">
+  <p class="text-primary text-center mt-3">
+    {{ messages.length }} message(s) reçu(s)
+  </p>
+  <div class="container pb-5 mb-5">
+    <div
+      (click)="selectMessage(message)"
+      class="btn btn-outline-primary p-1 m-2"
+      *ngFor="let message of messages"
+    >
+      <p>
+        {{ message.utilisateur?.prenom }} {{ message.utilisateur?.nom }} -
+        {{ message.utilisateur?.telephone }}
+      </p>
+      <p class="identifier small">
+        {{ message.titre }}
+      </p>
+      <p class="identifier small">{{ message.corpsMessage }}</p>
+    </div>
+  </div>
+</ng-container>
+<app-navbar></app-navbar>

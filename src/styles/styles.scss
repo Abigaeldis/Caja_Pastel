@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap");
+
+$primary: #f96540;
+$font-family-sans-serif: "Roboto";
+
+@import "bootstrap/scss/bootstrap";
+
+body {
+  margin: 0;
+}
+
+.custom-relative {
+  position: relative;
+}
+
+.custom-relative img {
+  max-height: 70px;
+}
+
+.custom-relative h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%);
+}
+
+.heading {
+  height: 43px;
+}
+
+.centered-transform {
+  margin: auto;
+  transform: translate(0%, -50%);
+  position: relative;
+
+  top: 50%;
+}
+
+.reservation button {
+  max-height: 35px !important;
+}
+
+.main-content {
+  max-height: calc(100vh - 120px);
+  overflow: hidden;
+}
+
+.accueil-btn {
+  height: 90px;
+}
+
+.image-overlay {
+  position: relative;
+  display: inline-block; /* Adjust as needed */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.image-overlay h1 {
+  z-index: 2;
+}
+
+.btn-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

@@ -1,0 +1,38 @@
+<div class="modal-header justify-content-between">
+  <h4 class="modal-title">Commande</h4>
+  <button
+    type="button"
+    class="close btn btn-outline-primary"
+    aria-label="Close"
+    (click)="onClose()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body text-primary">
+  <div
+    class="container-fluid m-0 p-0 row justify-content-between align-items-center"
+  >
+    <div class="col-3">Quantitée</div>
+    <div class="col-3 text-start">Plat</div>
+    <div class="col-3">Prix</div>
+  </div>
+  <ng-container *ngIf="detailCommande$ | async as detailCommande">
+    <div
+      *ngFor="let plats of detailCommande.listePlatsCommandes"
+      class="d-flex row justify-content-between align-items-center w-100 my-3"
+    >
+      <p class="col-2 text-end">{{ plats.nbPlat }}</p>
+      <p class="col-5 text-end">{{ plats.nom }}</p>
+      <p class="col-3 text-center">{{ plats.prixTot }} €</p>
+    </div>
+
+    <p class="align-items-center">
+      Prix total : {{ detailCommande.sommeAddition }} €
+    </p>
+  </ng-container>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-outline-primary btn-lg text-primary">Régler</button>
+</div>

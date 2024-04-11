@@ -1,0 +1,16 @@
+<div
+  class="heading container d-flex bg-primary align-items-center justify-content-between"
+>
+  <img
+    src="../../../assets/images/Vector_Logo.png"
+    alt="Description"
+    class="logo img-fluid"
+  />
+
+  <span class="fs-6 text-light">{{ text }}</span>
+  <div>
+    <button class="btn m-0 p-0" *ngIf="!isConnexionPage()" (click)="logout()">
+      <i class="fs-2 fas fa-power-off text-light m-0"></i>
+    </button>
+  </div>
+</div>

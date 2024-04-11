@@ -1,0 +1,25 @@
+<div
+  class="d-flex flex-column align-items-center border rounded border-primary bg-light text-primary text-center"
+>
+  <div class="d-flex flex-column">
+    <p class="">Table n°{{ table.numTable }}</p>
+    <p class="">Nombre de personnes : {{ table.capaciteTable }}</p>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary m-2 text-light"
+    (click)="priseCommande()"
+  >
+    Prendre commande
+  </button>
+
+  <button
+    type="button"
+    class="btn btn-outline-primary m-2"
+    data-bs-dismiss="modal"
+    (click)="onClose()"
+  >
+    Retour
+  </button>
+</div>

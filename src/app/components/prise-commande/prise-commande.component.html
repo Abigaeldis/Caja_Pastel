@@ -1,0 +1,196 @@
+<app-header text="Nouvelle commande"></app-header>
+<div class="d-flex flex-column m-2 justify-content-center align-items-center">
+  <p class="text-primary mb-0 mt-1">Choisissez une table</p>
+  <select
+    name="choixTable"
+    class="form-sm-select m-2 btn btn-outline-primary"
+    aria-label="Choix table"
+    [(ngModel)]="currentTable"
+  >
+    <option *ngFor="let table of listeTables$ | async" [ngValue]="table">
+      {{ table.numTable }}
+    </option>
+  </select>
+</div>
+
+<ng-container *ngIf="listeItemsPlat$ | async as listeItemsPlat">
+  <div class="d-flex flex-column flex-wrap gap-2 m-2">
+    <p class="text-primary mb-0 mt-3">Entrées</p>
+    <div
+      class="cadre d-flex flex-column btn btn-outline-primary align-items-start justify-content-space-between"
+    >
+      <ng-container *ngFor="let itemPlat of listeItemsPlat">
+        <ng-container *ngIf="itemPlat.type == 'entrée'">
+          <div
+            class="d-flex flex-row justify-content-between align-items-center w-100"
+          >
+            <p class="small mb-0">
+              {{ itemPlat.nom }}
+            </p>
+            <div
+              class="d-flex flex-row justify-content-center align-items-center"
+            >
+              <button
+                type="button"
+                class="plusmoins cadre btn btn-outline-primary d-flex justify-content-center align-items-center"
+                (click)="removeItem(itemPlat)"
+              >
+                -
+              </button>
+              <span class="m-2">{{
+                listeNbParItems &&
+                itemPlat.id &&
+                listeNbParItems[itemPlat.id] !== undefined
+                  ? listeNbParItems[itemPlat.id]
+                  : 0
+              }}</span>
+              <button
+                type="button"
+                class="plusmoins btn btn-primary text-white d-flex justify-content-center align-items-center"
+                (click)="addItem(itemPlat)"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <p class="text-primary mb-0 mt-3">Plats</p>
+    <div
+      class="cadre d-flex flex-column btn btn-outline-primary align-items-start justify-content-space-between"
+    >
+      <ng-container *ngFor="let itemPlat of listeItemsPlat">
+        <ng-container *ngIf="itemPlat.type == 'plat'">
+          <div
+            class="d-flex flex-row justify-content-between align-items-center w-100"
+          >
+            <p class="small mb-0">
+              {{ itemPlat.nom }}
+            </p>
+            <div
+              class="d-flex flex-row justify-content-center align-items-center"
+            >
+              <button
+                type="button"
+                class="plusmoins cadre btn btn-outline-primary d-flex justify-content-center align-items-center"
+                (click)="removeItem(itemPlat)"
+              >
+                -
+              </button>
+              <span class="m-2">{{
+                listeNbParItems &&
+                itemPlat.id &&
+                listeNbParItems[itemPlat.id] !== undefined
+                  ? listeNbParItems[itemPlat.id]
+                  : 0
+              }}</span>
+              <button
+                type="button"
+                class="plusmoins btn btn-primary text-white d-flex justify-content-center align-items-center"
+                (click)="addItem(itemPlat)"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <p class="text-primary mb-0 mt-3">Desserts</p>
+    <div
+      class="cadre d-flex flex-column btn btn-outline-primary align-items-start justify-content-space-between"
+    >
+      <ng-container *ngFor="let itemPlat of listeItemsPlat">
+        <ng-container *ngIf="itemPlat.type == 'dessert'">
+          <div
+            class="d-flex flex-row justify-content-between align-items-center w-100"
+          >
+            <p class="small mb-0">
+              {{ itemPlat.nom }}
+            </p>
+            <div
+              class="d-flex flex-row justify-content-center align-items-center"
+            >
+              <button
+                type="button"
+                class="plusmoins cadre btn btn-outline-primary d-flex justify-content-center align-items-center"
+                (click)="removeItem(itemPlat)"
+              >
+                -
+              </button>
+              <span class="m-2">{{
+                listeNbParItems &&
+                itemPlat.id &&
+                listeNbParItems[itemPlat.id] !== undefined
+                  ? listeNbParItems[itemPlat.id]
+                  : 0
+              }}</span>
+              <button
+                type="button"
+                class="plusmoins btn btn-primary text-white d-flex justify-content-center align-items-center"
+                (click)="addItem(itemPlat)"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <p class="text-primary mb-0 mt-3">Boissons</p>
+    <div
+      class="cadre d-flex flex-column btn btn-outline-primary align-items-start justify-content-space-between"
+    >
+      <ng-container *ngFor="let itemPlat of listeItemsPlat">
+        <ng-container *ngIf="itemPlat.type == 'boisson'">
+          <div
+            class="d-flex flex-row justify-content-between align-items-center w-100"
+          >
+            <p class="small mb-0">
+              {{ itemPlat.nom }}
+            </p>
+            <div
+              class="d-flex flex-row justify-content-center align-items-center"
+            >
+              <button
+                type="button"
+                class="plusmoins cadre btn btn-outline-primary d-flex justify-content-center align-items-center"
+                (click)="removeItem(itemPlat)"
+              >
+                -
+              </button>
+              <span class="m-2">{{
+                listeNbParItems &&
+                itemPlat.id &&
+                listeNbParItems[itemPlat.id] !== undefined
+                  ? listeNbParItems[itemPlat.id]
+                  : 0
+              }}</span>
+              <button
+                type="button"
+                class="plusmoins btn btn-primary text-white d-flex justify-content-center align-items-center"
+                (click)="addItem(itemPlat)"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
+
+<div class="d-flex flex-row gap-4 m-2 justify-content-center pb-5 mb-5">
+  <button class="cadre btn btn-outline-primary" (click)="clearCommande()">
+    Annuler
+  </button>
+  <button class="btn btn-primary text-light" (click)="lancerCommande()">
+    Valider
+  </button>
+</div>
+<app-navbar></app-navbar>
